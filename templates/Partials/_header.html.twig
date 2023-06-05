@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<div class="container-fluid pr-5">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse"id="navbarColor01">
+
+			<ul class="navbar-nav me-auto d-flex justify-content-between align-items-center">
+
+				<li class="nav-item">
+					<a class="nav-link active fs-4" href="{{ path('home.index') }}">Accueil
+						<span class="visually-hidden">(current)</span>
+					</a>
+				</li>
+			</li>
+
+				{% if not app.user %}
+
+				<li class="nav-item">
+					<a class="btn btn-primary fs-5" href="{{ path('security.login') }}">Login</a>
+				</li>
+
+				{% endif %}
+
+				{% if app.user %}
+
+					<li class="nav-item">
+						<a class="btn btn-primary" href="{{ path('contribution.index') }}">Mes Contributions</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="btn btn-primary" href="{{ path('app_mon_compte')}}">Mon compte</a>
+					</li>
+
+					{% if is_granted('ROLE_ADMIN') %}
+
+					<div class="d-flex">
+						<a href="{{ path('admin')}}" class="btn btn-primary">Accès administrateur</a>
+					</div>
+					{% endif %}
+
+					{% endif %}
+
+					{% if app.user %}
+				</ul>
+			<div class="nav-item dropdown">
+				<a class="btn btn-primary dropdown-toggle fs-3 nav-item" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Hello {{app.user.username}} !
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><a href="{{ path('account.index') }}" class="dropdown-item">Ajouter une Contributions</a></li>
+
+					<li><hr class="dropdown-divider"></li>
+					<li><a href="{{ path('security.logout')}}" class="dropdown-item">Logout</a></li>
+					
+				</ul>
+			</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</nav>

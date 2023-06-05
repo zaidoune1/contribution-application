@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+
+
+<style>
+    .example-wrapper {margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+</style>
+
+    <div class="container mt-5">
+
+		<div class="jumbotron">
+
+    <h1 class='mt-5'>Bienvenue  sur Contributor</h1>
+
+    <p class="d-flex justify-content-center align-items-center mt-5 lh-lg fs-5">
+        Ce site vous permet de participer à l’identification des lieux où vous avez effectué des paiements par carte bancaire, 
+        en utilisant les informations d’opération bancaire et de géoposition. Vous pouvez ainsi enrichir la base de données des lieux et bénéficier d’un suivi personnalisé de vos dépenses. 
+        Pour contribuer, il vous suffit de créer un compte, de consulter la liste de vos opérations et de choisir le lieu correspondant à chaque paiement parmi les propositions faites par l’API Google Places. 
+        Rejoignez dès maintenant la communauté des contributeurs et aidez-nous à fiabiliser la base de lieux !
+    </p>
+
+	{% if not app.user %}
+	<a class="btn btn-primary p-3 btn-lgz" href="/inscription" role="button">Inscription</a> 
+    {% endif %}
+    </div>
+    </div>
+    {% endblock %}

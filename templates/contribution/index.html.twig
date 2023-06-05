@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Opérations Bancaires
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4 mb-5">
+
+			{% if OperationsBancaire | length > 0 %}
+			<h1 class='mt-5 mb-5'>Mes Opérations Bancaires</h1>
+			{% endif %}
+
+			<a href="{{ path('account.index')}}"class="btn btn-primary mt-3 mb-5">
+				Créer une Opérations Bancaires
+			</a>
+			
+			{% if OperationsBancaire is empty %}
+			<h2 class="text-center text-primary fs-1">pas d'operation !<h1/>
+			<img src='https://t4.ftcdn.net/jpg/02/81/17/19/360_F_281171941_ptD3zBY8lVTbx1gOdUPI0UIFmRTl8doo.jpg' class='w-50 h-50' alt="photo"/>
+			{% else %}
+
+		<table class="table table-hover mt-3">
+				<thead>
+					<tr style="text-align:center">
+						<th scope="col">Nombre Total des opérations</th>
+                        <th scope="col">Nombre des opérations validées</th>
+						<th scope="col">Nombre des opérations non validées</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr class="table-secondary center" style="text-align:center; font-weight:700">
+
+				<td>{{ OperationsBancaire | length }} </td>
+
+				<td>{% set count = 0 %}
+
+			{% for OperationsBancaire in OperationsBancaire %}
+
+			{% if OperationsBancaire.placeName is not empty %}
+
+				{% set count = count + 1 %}
+
+			{% endif %}
+
+			{% endfor %}
+
+			{{ count }} 
+			</td>
+			<td>
+
+			{{ countNonValidé }} 
+
+			</td>
+				</tr>
+				</tbody>
+		</table>				
+			<table class="table table-hover mt-4">
+				<thead>
+					<tr>
+						<th scope="col">Id Operation</th>
+                        <th scope="col">Date</th>
+						<th scope="col">Libelle</th>
+						<th scope="col">Position_Gps</th>
+						<th scope="col">Nom de la place</th>
+						<th scope="col">Validation</th>
+					</tr>
+				</thead>
+			<tbody>
+		{% for OperationsBancaire in OperationsBancaire %} 
+				<tr class="table-primary">
+					<th scope="row">{{ OperationsBancaire.id }}</th> 
+					<td>{{ OperationsBancaire.dateOperation|date('d/m/Y') }}</td> 
+                    <td>{{ OperationsBancaire.libelle }}</td> 
+					<td>
+				{{ OperationsBancaire.longitude }} - {{ OperationsBancaire.latitude }}
+					</td>
+					{% if OperationsBancaire.placeName %}
+					<td>{{ OperationsBancaire.placeName }}</td>
+					{% else %}
+					<td>Non Validé</td>
+					{% endif %}
+					{% if OperationsBancaire.placeName %}
+						<td>Lieu validé</td>
+					{% else %}
+					<td>
+						<a class='text-decoration-none' href="{{ path('app_update_validation', {'OperationId': OperationsBancaire.id}) }}">Valider le lieu</a>
+					</td>
+							{% endif %}
+						</tr>
+					{% endfor %} 
+				</tbody>
+			</table>
+		<div class="navigation d-flex justify-content-center mt-4"></div>
+		
+	{% endif %}
+			</div>
+	{% endblock %}
+
