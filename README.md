@@ -60,7 +60,7 @@ php bin/console secrets:generate-keys
 - DATABASE_URL : l'URL de connexion à la base de données MySQL. Vous devez indiquer le nom d'utilisateur, le mot de passe, le nom de la base de données et éventuellement le port et le serveur. Par exemple :
 
 ```bash
-DATABASE_URL="mysql://contribution@localhost:3306/contribution"
+DATABASE_URL="mysql://contributionapp@localhost:3306/contributionapp"
 ```
 
 Une fois le fichier .env.local créé et renseigné, vous devez créer la base de données en utilisant la commande suivante :
