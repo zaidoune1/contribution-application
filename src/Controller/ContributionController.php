@@ -20,6 +20,7 @@ use Symfony\Contracts\Cache\ItemInterface;
 
 
 
+
 class ContributionController extends AbstractController
 {
 
@@ -61,7 +62,20 @@ class ContributionController extends AbstractController
             'countNonValidé' => $countNonValidé,
         ]);
 
-        
+    }
+
+    #[Route('/contribution/delete/{id}', name: 'delete.index', methods: ['GET'])]
+    public function delete(EntityManagerInterface $manager,OperationsBancaire $operation, $id ) : Response 
+    
+    {
+
+        $operation = $manager->find(OperationsBancaire::class, $id);
+
+
+        $manager->remove($operation);
+        $manager->flush();
+
+        return $this->redirectToRoute('contribution.index');   
     }
 
 }

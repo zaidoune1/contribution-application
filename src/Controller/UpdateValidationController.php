@@ -66,7 +66,7 @@ class UpdateValidationController extends AbstractController
             $manager->persist($operation);
             $manager->flush();
 
-            return $this->redirectToRoute('contribution.index');    
+            return $this->redirectToRoute('contribution.index');   
     }
         
         return $this->render('update_validation/index.html.twig', [
