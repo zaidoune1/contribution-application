@@ -4,6 +4,40 @@
 
 Le projet Contributor consiste à développer une application web qui permet aux utilisateurs de contribuer à identifier les lieux où ils ont effectué des paiements par carte bancaire. L'application utilise les informations d'opération bancaire et de géoposition pour proposer une liste de lieux possibles à l'aide de l'API Google Places. L'utilisateur peut alors choisir le lieu correspondant à son paiement et ainsi enrichir la base de données des lieux.
 
+## pour initialiser le projet avec docker veuillez suivre ces étapes :
+
+## Prérequis
+- Docker
+- Docker-compose
+
+## Installation
+
+1. Cloner le dépôt git : `git clone https://github.com/zaidoune1/contribution-application.git`
+2. Se rendre dans le répertoire du projet : `cd contribution-application`
+3. Construire les images Docker : `docker-compose build`
+4. Lancer les conteneurs Docker : `docker-compose up -d`
+5. Accéder à l'application via l'URL : http://localhost:8080
+
+## Utilisation
+
+L'application permet de créer des utilisateurs, des projets et des contributions. Un utilisateur peut s'inscrire, se connecter, créer un projet, rejoindre un projet existant, faire une contribution à un projet, voir les contributions des autres utilisateurs, commenter les contributions, noter les contributions et voir son profil.
+
+## Arrêt
+
+Pour arrêter les conteneurs Docker, exécuter la commande : `docker-compose down`
+
+## Modification
+
+Pour modifier les paramètres de l'application, éditer le fichier `.env` à la racine du projet. Pour modifier le code de l'application, éditer les fichiers dans le répertoire `app`. Les modifications seront automatiquement prises en compte par Docker.
+
+## Test
+
+Pour tester l'application, exécuter la commande : `docker-compose exec php bin/phpunit`
+
+
+## pour initialiser le projet avec composer install veuillez suivre ces étapes :
+
+
 ## Prérequis techniques
 
 Pour installer le projet Contributor, vous devez avoir :
