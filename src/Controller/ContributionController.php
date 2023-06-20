@@ -18,9 +18,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 
-
-
-
 class ContributionController extends AbstractController
 {
 
@@ -35,7 +32,6 @@ class ContributionController extends AbstractController
         Request $request,
 
     ): Response {
-
 
         $OperationsBancaire = $paginator->paginate(
             $repository->findBy(['user' => $this->getUser()]),
@@ -61,7 +57,6 @@ class ContributionController extends AbstractController
             'OperationsBancaire' => $OperationsBancaire,
             'countNonValidé' => $countNonValidé,
         ]);
-
     }
 
     #[Route('/contribution/delete/{id}', name: 'delete.index', methods: ['GET'])]
@@ -71,7 +66,6 @@ class ContributionController extends AbstractController
 
         $operation = $manager->find(OperationsBancaire::class, $id);
 
-
         $manager->remove($operation);
         $manager->flush();
 
@@ -79,8 +73,3 @@ class ContributionController extends AbstractController
     }
 
 }
-
-
-
-
-

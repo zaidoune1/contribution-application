@@ -7,7 +7,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use App\Repository\UserRepository;
 use App\Entity\User;
 use App\Form\RegistrationType;
-use Doctrine\ORM\EntityManagerInterface;
+// use Doctrine\ORM\ ;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
